@@ -47,7 +47,10 @@ app.get("/fruits/:fruitId", async (req, res) => {
     res.render("fruits/show.ejs", { fruit: foundFruit });
 });
 
-
+app.delete("/fruits/:fruitId", async (req, res) => {
+    await Fruit.findByIdAndDelete(req.params.fruitId);
+    res.redirect("/fruits");
+});
 
 
 
