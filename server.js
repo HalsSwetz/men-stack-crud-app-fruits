@@ -2,6 +2,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const express = require('express');
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+const morgan = require("morgan");
 
 const app = express();
 
@@ -14,6 +16,8 @@ mongoose.connection.on("connected", () => {
 const Fruit = require("./models/fruit.js");
 
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
+app.use(morgan("dev"));
 
 app.post("/fruits", async (req, res) => {
     if (req.body.isReadyToEat === "on") {
