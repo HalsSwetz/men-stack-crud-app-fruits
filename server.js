@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const path = require("path");
 
 const app = express();
 
@@ -17,7 +18,8 @@ const Fruit = require("./models/fruit.js");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/fruits", async (req, res) => {
     if (req.body.isReadyToEat === "on") {
