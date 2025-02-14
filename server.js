@@ -22,7 +22,7 @@ app.post("/fruits", async (req, res) => {
         req.body.isReadyToEat = false;
     }
     await Fruit.create(req.body);
-    res.redirect("/fruits/new");
+    res.redirect("/fruits");
 });
 
 app.get("/", async (req, res) => {
