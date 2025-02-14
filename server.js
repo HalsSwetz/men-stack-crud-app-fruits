@@ -38,7 +38,11 @@ app.get("/fruits/new", (req, res) => {
     res.render("fruits/new.ejs");
 });
 
-
+app.get("/fruits/:fruitId", (req, res) => {
+    res.send(
+        `This route renders the show page for the fruit id: ${req.params.fruitId}!`
+    );
+});
 
 
 
